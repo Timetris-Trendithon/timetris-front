@@ -68,7 +68,7 @@ const Do = ({ doValue, isDragging }) => {
 
     return (
         <div>
-            <div className="flex  ml-64 mt-6 mb-2">
+            <div className="flex ml-64 mt-7 mb-2">
             <img 
                 src={images.btn30} 
                 alt="안내버튼" 
