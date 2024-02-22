@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { CategoryContext } from '../../../../context/CategoryContext';
-
+import { get, post, delete as del } from '../../../../api/API.js';
 export const ExitBtn = styled.button`
     color: ${(props) => props.color || '#A8A8A8'};
     background-color: ${(props) => props.backgroundColor  || '#F1F1F1'};
@@ -17,8 +17,6 @@ export const ExitBtn = styled.button`
 
 const FooterModal = ({type}) => {
     const { myCategory, ModalHandler, HandleAddCategory, addCategory, fixCategory} = useContext(CategoryContext);
-
-    
 
     return (
         <div className='flex'>
