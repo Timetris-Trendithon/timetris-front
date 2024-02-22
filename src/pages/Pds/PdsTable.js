@@ -4,7 +4,13 @@ import styled from 'styled-components'
 import Plan from './Plan';
 import Do from './Do';
 import See from './See';
+<<<<<<< HEAD
 import { get, post, delete as del } from '../../api/API.js';
+=======
+// import { PDSTableContext } from '../../context/PDSTableContext';
+// import data from './api연습'
+
+>>>>>>> e339875d8b884c29c254187c26837681d493a901
 const TableContainer = styled.div`
     display : flex;
     flex-direction : column;
@@ -16,7 +22,6 @@ const ToolTipContainer = styled.div`
     cursor : pointer;
     justify-content : space-between;
 `
-
 const ToolTip = styled.div`
     width: 400px;
     height: 49px;
@@ -40,7 +45,6 @@ const BtnContainer = styled.div`
     display : flex;
     justify-content : flex-end;
 `
-
 const PDSContainer = styled.div`
     margin-top : 16px;
     display : flex;
@@ -58,6 +62,13 @@ const BottomContainer = styled.div`
 `
 
 const PdsTable = () => {
+    // // 1. main data GET!
+    // // data 박아놓기
+    // console.log(data.result.doViewDTOList[0].title)
+    // const planData = data.result.planViewDTOList[0]
+    // const doData = data.result.doViewDTOList[0]
+    // const seeData = data.result.seeViewDTO[0]
+
     const [showAlert, setShowAlert] = useState(false);
 
     // 버튼을 누를 때 알림 보이기
