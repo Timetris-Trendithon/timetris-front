@@ -12,7 +12,9 @@ import axios from 'axios';
 const TempCategory = () => {
     // 토큰
     const headers = {
-        'Authorization': `Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImV4cCI6MTcwODQ1NTkyMSwiZW1haWwiOiJzaHRtZGdtbDI1OTVAZ21haWwuY29tIiwibWVtYmVySWQiOjJ9.G2mQC9by4nt30bkbwyHNUuXxa_p06OQyidcbkAiMW5e8K9d-w53ISZuYUw-BkkasopReSKrBTHiI_tHLenJysw`
+        'Authorization': `eyJhbGciOiJIUzUxMilsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBY2NIc3NUb2tibilsimV4cCI6MTCWODI2
+        NQ5MSwiZW1haWwOiJkdXJzbHduYWhAZ21haWwuY29tliwibWVtYmvySWQIOjEzfQ.RSG6IT a0SafleZnoHkYdyD_HviJydvpqVPpz6NLC651Ui8Ncs711DWSUS1gFMTQzd37d4-
+        Jybw34v9AJticiw`
     };
     // 색상 코드
     const selectColorCode = ["#e15d5e","#f0b0a9","#f3bec7","#ee82a1","#edb18c","#f49963","#f48068","#eccd85","#f3bd72", "#96d4bf","#79a5c8", "#4692bb", "#53bfcc", "#88d7da","#d0b8de"]

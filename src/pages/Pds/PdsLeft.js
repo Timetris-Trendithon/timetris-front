@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import Calendar from "react-calendar";
 import styled from "styled-components";
-import moment from "moment";
+import moment, { Moment as MomentTypes } from 'moment';
 import 'moment/locale/ko'; // 한국어 locale 추가
 import { images } from '../../utils/images';
 import '../../css/pds.css'
 
 const PdsLeft = () => {
   const [value, onChange] = useState(new Date());
-  const [nowDate, setNowDate] = useState(moment().format("YYYY년 MM월 DD일 ddd요일")); // 오늘의 날짜로 초기화
+  const [nowDate, setNowDate] = useState(moment().format("YYYY년 M월 DD일 ddd요일")); // 오늘의 날짜로 초기화
   const [isOpen, setIsOpen] = useState(false);
   const calendarRef = useRef(null);
 
@@ -33,19 +33,19 @@ const PdsLeft = () => {
   const handleDateChange = (selectedDate) => {
     onChange(selectedDate);
     setIsOpen(false);
-    setNowDate(moment(selectedDate).format("YYYY년 MM월 DD일 ddd요일")); // 선택한 날짜로 변경
+    setNowDate(moment(selectedDate).format("YYYY년 M월 DD일 ddd요일")); // 선택한 날짜로 변경
   };
 
   const handlePreviousDay = () => {
     const previousDay = moment(value).subtract(1, 'days').toDate();
     onChange(previousDay);
-    setNowDate(moment(previousDay).format("YYYY년 MM월 DD일 ddd요일")); // 선택한 날짜로 변경
+    setNowDate(moment(previousDay).format("YYYY년 M월 DD일 ddd요일")); // 선택한 날짜로 변경
   };
 
   const handleNextDay = () => {
     const nextDay = moment(value).add(1, 'days').toDate();
     onChange(nextDay);
-    setNowDate(moment(nextDay).format("YYYY년 MM월 DD일 ddd요일")); // 선택한 날짜로 변경
+    setNowDate(moment(nextDay).format("YYYY년 M월 DD일 ddd요일")); // 선택한 날짜로 변경
   };
 
   return (
@@ -60,12 +60,15 @@ const PdsLeft = () => {
           </button>
           <div ref={calendarRef}>
             <CalendarContainer>
-              <DropdownButton onClick={handleToggleCalendar} className="text-neutral-700 text-4xl font-bold font-['Pretendard'] leading-10 mx-4 hover:text-[#6BB8FF]">{nowDate}</DropdownButton>
+              <DropdownButton onClick={handleToggleCalendar} className="text-neutral-700 text-4xl font-bold font-['Pretendard'] leading-10 mx-2 hover:text-[#6BB8FF]">{nowDate}</DropdownButton>
               <CalendarWrapper isOpen={isOpen} className="mt-3">
                 <Calendar
                   onChange={handleDateChange}
                   value={value}
                   formatDay={(locale, date) => moment(date).format("DD")}
+                  navigationLabel={null}
+                  showNeighboringMonth={false} //  이전, 이후 달의 날짜는 보이지 않도록 설정
+
                 ></Calendar>
               </CalendarWrapper>
             </CalendarContainer>
@@ -75,11 +78,11 @@ const PdsLeft = () => {
           </button>
         </div>
       </div>
-      <div className="w-96 h-60 relative bg-neutral-100 rounded-lg bg-[#F6F6F6] flex flex-col items-center justify-center">
-        <div className="mb-4 w-full">
-          <div className="flex justify-between w-full">
+      <div className="w-[26rem] h-56 relative bg-neutral-100 rounded-lg bg-[#F6F6F6] flex flex-col items-center justify-center px-6">
+        <div className="mb-3 w-full">
+          <div className="flex justify-between w-full mt-[-1.5rem] ">
             <div className="flex items-center">
-              <div className="text-center text-neutral-700 text-xl font-medium ml-5">
+              <div className="text-center text-neutral-700 text-xl font-medium  mt-[-5] mr-2 ">
                 나의 카테고리
               </div>
               <div>

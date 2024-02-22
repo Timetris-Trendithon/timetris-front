@@ -67,27 +67,30 @@ const Do = ({ doValue, isDragging }) => {
 };
 
     return (
-        <div>
-            <div className="flex ml-64 mt-7 mb-2">
-            <img 
-                src={images.btn30} 
-                alt="안내버튼" 
-                onClick={handleButtonClick} // 버튼 클릭 이벤트 추가
-            />
-            {/* 알림이 보이는 경우에만 표시 */}
-            {showAlert && (
-                <div className=" ml-5 w-96 h-12 relative">
-                    <div className="w-96 h-12 left-0 top-0 absolute">
-                        <div className="opacity-30 w-96 h-12 left-0 top-0 absolute">
-                            <div className="w-96 h-12 left-0 top-0 absolute bg-[#9B9B9B] rounded-2xl" />
-                            <div className="w-96 h-12 left-0 top-0 absolute rounded-2xl" />
+        <div className="relative">
+            <div className="ml-[17.5rem] mt-7 mb-2">
+                <div className="flex">
+                <img 
+                    src={images.btn30} 
+                    alt="안내버튼" 
+                    onClick={handleButtonClick} // 버튼 클릭 이벤트 추가
+                />
+                {/* 알림이 보이는 경우에만 표시 */}
+                {showAlert && (
+                    <div className=" ml-5 w-96 h-12 relative">
+                        <div className="w-96 h-12 left-0 top-0 absolute">
+                            <div className="opacity-30 w-96 h-12 left-0 top-0 absolute">
+                                <div className="w-96 h-12 left-0 top-0 absolute bg-[#9B9B9B] rounded-2xl" />
+                                <div className="w-96 h-12 left-0 top-0 absolute rounded-2xl" />
+                            </div>
+                            <div className="left-[22px] top-[15px] absolute text-center text-neutral-700 text-base font-medium font-[#383838]">원하는 시간대를 드래그해서 일정을 작성해보세요!</div>
                         </div>
-                        <div className="left-[22px] top-[15px] absolute text-center text-neutral-700 text-base font-medium font-[#383838]">원하는 시간대를 드래그해서 일정을 작성해보세요!</div>
                     </div>
+                )}
                 </div>
-            )}
             </div>
-            <div className="flex justify-center">
+            
+            <div className="flex justify-center relative">
                 <div>
                     <div className="w-96 h-12 bg-zinc-100 rounded-tl-lg border border-[#E4E4E4] text-center text-neutral-400 text-2xl font-semibold leading-10 bg-[#F1F1F1] text-[#A6A6A6] flex justify-center items-center ">PLAN</div>
                     <Plan />
@@ -178,7 +181,7 @@ const Do = ({ doValue, isDragging }) => {
                 </div> 
             </div>
             <div className="flex justify-center items-center w-full h-full">
-                <div className="w-100 h-64 mb-32 border border-[#E4E4E4] bg-[#F6F6F6] text-center text-2xl font-normal leading-10 relative rounded-bl-lg rounded-br-lg">
+                <div className="w-[56rem] h-64 mb-32 border border-[#E4E4E4] bg-[#F6F6F6] text-center text-2xl font-normal leading-10 relative rounded-bl-lg rounded-br-lg">
                     <div className="flex flex-col h-full justify-between">
                         <div className="flex flex-col">
                             <div className="flex pt-4 pl-6 pr-3">
