@@ -1,8 +1,5 @@
 import styled from "styled-components"
-import * as API from '../../api/API'
-import { PDSTableContext } from '../../context/PDSTableContext';
-import { useContext, useState } from "react";
-
+import { get, post, delete as del } from '../../api/API.js';
 const PlanContainer = styled.div`
 
 `
@@ -46,8 +43,6 @@ const PlanTableCell = styled.td`
 `
 
 const Plan = () => {
-    const { planData } = useContext(PDSTableContext)
-
     const Time = ["4AM", "5AM", "6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM",
         "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM"
         , "11PM", "12AM", "1AM", "2AM", "3AM"]
@@ -64,54 +59,14 @@ const Plan = () => {
         }
         tableData.push(rowData);
     }
+    console.log(tableData)
 
-    const checkColoredCell = () => {
-        let normalizedStartHour = planData.startTime.hour;
-        let normalizedEndHour = planData.endTime.hour;
-
-        if (planData.startTime.hour >= 4 && planData.startTime.hour <= 24) {
-            normalizedStartHour = planData.startTime.hour - 4;
-        } else if (planData.startTime.hour >= 1 && planData.startTime.hour <= 3) {
-            normalizedStartHour = planData.startTime.hour + 20;
-        }
-
-        if (planData.endTime.hour >= 4 && planData.endTime.hour <= 24) {
-            normalizedEndHour = planData.endTime.hour - 4;
-        } else if (planData.endTime.hour >= 1 && planData.endTime.hour <= 3) {
-            normalizedEndHour = planData.endTime.hour + 20;
-        }
-        const planedCellIndex = []
-        if (normalizedStartHour > normalizedEndHour) {
-            for (let i = normalizedStartHour; i < 24; i++) {
-                planedCellIndex.push(i)
-            }
-            for (let j = 0; j <= normalizedEndHour; j++) {
-                planedCellIndex.push(j)
-            }
-        } else {
-            for (let i = normalizedStartHour; i < normalizedEndHour + 1; i++) {
-                planedCellIndex.push(i)
-            }
-        }
-        return [normalizedStartHour, planedCellIndex]
-    }
-    // 각 행을 나타내는 JSX 배열을 생성
+    // 각 행을 나타내는 JSX 배열을 생성합니다.
     const tableRows = tableData.map((rowData, rowIndex) => (
         <PlanTableRow key={rowIndex}>
-            {rowData.map((colData, colIndex) => {
-                // 특정 조건에 따라 배경색을 설정
-                let [normalizedStartHour, planedCellIndex] = checkColoredCell()
-                const isColoredCell = colIndex == 0 && planedCellIndex.includes(rowIndex)
-                const isStartTimeCell = colIndex == 0 && rowIndex == normalizedStartHour;
-                return (
-                    <PlanTableCell key={colIndex} style={{ backgroundColor: isColoredCell ? planData.category.colorCode : '#F6F6F6' }}>
-                        {isStartTimeCell
-                            ? planData.title : ""
-                        }
-                        {colData}
-                    </PlanTableCell>
-                );
-            })}
+            {rowData.map((colData, colIndex) => (
+                <PlanTableCell key={colIndex}>{colData}</PlanTableCell>
+            ))}
         </PlanTableRow>
     ));
 
@@ -128,19 +83,6 @@ const Plan = () => {
                     {tableRows}
                 </tbody>
             </PlanTable>
-            {/* <CategoryContext.Provider
-                value={{
-                    state, setState, ModalHandler, selectColorCode,
-                    addCategory, setAddCategory, HandleAddCategory,
-                    selectedDay, handleRepeatCheck,
-                    categoryId, setCategoryId,
-                    myCategory, setMyCategory, ShowCategoryList,
-                    fixCategory, setFixCategory,
-                    addPlan, setAddPlan,
-                    doPlan, setDoPlan
-                }}>
-                <PlanModal />
-            </CategoryContext.Provider> */}
         </PlanContainer>
     )
 }
